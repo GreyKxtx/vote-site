@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Голосование за магазины техники</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="progress.css">
+    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="list.css">
+    <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">
+            Проходьте опитування - отримуйте винагороду!
+            Змінимо світ на краще разом!
+        </h1>
+        <ol style="--length: 5" role="list" class="list">
+            <li style="--i: 1">
+                <h3>Як це працює?</h3>
+                <p>
+                    При реєстрації вам одразу буде нараховано 1000 грн та в особистому кабінеті стане активною кнопка «Виведення коштів».
+                </p>
+            </li>
+            <li style="--i: 2">
+                <h3>Як вивести кошти?</h3>
+                <p>Ви зможете вивести їх: на картку будь-якого українського банка або на мобільний телефон будь-якого українського оператора</p>
+            </li>
+            <li style="--i: 3">
+                <h3>Що по знижкам?</h3>
+                <p>Знижка 50% на одну покупку будь-якого товару в магазині котрий ви обрали</p>
+            </li>
+            <li style="--i: 4">
+                <h3>Як прийняти участь?</h3>
+                <p>Участь в проекті безкоштовна, а реєстрація проста і зручна. Почнемо?</p>
+            </li>
+        </ol>
+        
+        <div class="tab-wrap">
+            <!-- active tab on page load gets checked attribute -->
+            <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+            <label for="tab1">Магазини Продуктові</label>
+            
+            <input type="radio" id="tab2" name="tabGroup1" class="tab">
+            <label for="tab2">Магизини техніки</label>
+            
+            <input type="radio" id="tab3" name="tabGroup1" class="tab">
+            <label for="tab3">Заправки</label>
+            
+            <div data-tab="tab1" class="tab__content">
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="front"><img class="voting-photo" src="photo/photo_vorting_group/atb.png" alt=""></div>
+                        <div class="back"><img class="voting-photo" src="photo/photo_vorting_group/silpo.png" alt=""></div>
+                    </div>
+                </div>
+                <section class="rating">
+                    <h2 class="section-title">Рейтинг учасників:</h2>
+
+                    <div class="rating-container">
+                        <div class="card">
+                            <div class="progress-container">
+                                <h3 class="progress-title">АТБ</h3>
+        
+                                <div class="progress-box">
+                                    <div class="progress">
+                                    <div class="progress-bar" data-progress="atb" style="width: 70%"></div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="card">
+                            <div class="progress-container">
+                                <h3 class="progress-title">СІЛЬПО</h3>
+        
+                                <div class="progress-box">
+                                    <div class="progress">
+                                    <div class="progress-bar" data-progress="silpo" style="width: 20%"></div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div data-tab="tab2" class="tab__content">
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="front"><img class="voting-photo" src="photo/photo_vorting_group/foxtrot.png" alt=""></div>
+                        <div class="back"><img class="voting-photo" src="photo/photo_vorting_group/allo.png" alt=""></div>
+                    </div>
+                </div>
+                <section class="rating">
+                    <h2 class="section-title">Рейтинг учасників:</h2>
+
+                    <div class="rating-container">
+                        <div class="card">
+                            <div class="progress-container">
+                                <h3 class="progress-title">Фокстрот</h3>
+        
+                                <div class="progress-box">
+                                    <div class="progress">
+                                    <div class="progress-bar" data-progress="foxtrot" style="width: 70%"></div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="card">
+                            <div class="progress-container">
+                                <h3 class="progress-title">Алло</h3>
+        
+                                <div class="progress-box">
+                                    <div class="progress">
+                                    <div class="progress-bar" data-progress="allo" style="width: 20%"></div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div data-tab="tab3" class="tab__content">
+                <div class="card-container">
+                    <div class="flip-card">
+                        <div class="front"><img class="voting-photo" src="photo/photo_vorting_group/socar.png" alt=""></div>
+                        <div class="back"><img class="voting-photo" src="photo/photo_vorting_group/wog.png" alt=""></div>
+                    </div>
+                </div>
+                <section class="rating">
+                    <h2 class="section-title">Рейтинг учасників:</h2>
+
+                    <div class="rating-container">
+                        <div class="card">
+                            <div class="progress-container">
+                                <h3 class="progress-title">Socar</h3>
+        
+                                <div class="progress-box">
+                                    <div class="progress">
+                                    <div class="progress-bar" data-progress="socar" style="width: 70%"></div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="card">
+                            <div class="progress-container">
+                                <h3 class="progress-title">Wog</h3>
+        
+                                <div class="progress-box">
+                                    <div class="progress">
+                                    <div class="progress-bar" data-progress="wog" style="width: 20%"></div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <a href="./auth.html" id="auth-button" class="button">
+                <div class="text">Авторизоватся</div>
+            </a>
+
+            <div id="vote-button" class="button">
+                <div class="text">Голосовать</div>
+            </div>
+
+            <div class="button-progress-bar"></div>
+            <svg x="0px" y="0px"
+                viewBox="0 0 25 30" style="enable-background:new 0 0 25 30;">
+                <path class="check" class="st0" d="M2,19.2C5.9,23.6,9.4,28,9.4,28L23,2"/>
+            </svg>
+        </div>
+
+        <div id="refferal" class="tab-wrap">
+            <p>
+                <span>Ви ввійшли як:</span>
+                <span id="username"></span>
+            </p>
+            <p class="refLink">
+                <span>Реферальная ссылка:</span>
+                <div class="referal-wrapper">
+                    <div class="copy_form">
+                      <input id="copy_field" type="text" readonly>
+                      <div class="tooltip">
+                        <button id="copy_button" type="submit" onclick="myFunction()" onmouseout="outFunc()">COPY</button>
+                        <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                      </div>
+                    </div>
+                </div>
+                  
+            </p>
+            <p>
+                <span>Рефералов:</span>
+                <span id="refCount">
+                    0
+                </span>
+            </p>
+        </div>
+    </div>
+    
+    <h2 class="section-title">Наші партнери:</h2>
+
+    <div class="container about">
+        <div class="card">
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                    <div>
+                        <img src="./photo/photo_vorting_group/atb.png" alt="">
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <img src="./photo/photo_vorting_group/silpo.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                    <div>
+                        <img src="./photo/photo_vorting_group/foxtrot.png" alt="">
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <img src="./photo/photo_vorting_group/allo.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                    <div>
+                        <img src="./photo/photo_vorting_group/wog.png" alt="">
+                    </div>
+                </div>
+                <div class="item">
+                    <div>
+                        <img src="./photo/photo_vorting_group/socar.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Вітаємо!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Вам нараховано гарантований реферальний бонус. Оберіть одного з учасників та проголосуйте</p>
+            </div>
+            <div class="modal-footer">
+                <button id="button-19" class="button-19 modal-button" role="button">Продовжити</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalSuccess" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Дякую за ваш голос!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Протягом дня з вами зв'яжеться менеджер.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="button-19" class="button-19 modal-button" role="button">Добре</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script src="main.js"></script>
+    <script src="jQuery.js"></script>
+    <script src="./carousel.js"></script>
+    <script src="./modal.js"></script>
+    <script src="background.js"></script>
+</body>
+</html>
