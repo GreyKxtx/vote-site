@@ -80,7 +80,7 @@
   
   /* Tab Content */
   .tab__content {
-    padding: 10px 25px;
+    padding: 10px 10px;
     background-color: transparent;
     position: absolute;
     width: 100%;
@@ -183,6 +183,7 @@
 .progress-box {
   width: 100%;
   margin-right: 10px;
+  margin-top: 3px;
 }
 
 .rating-container .card {
@@ -205,8 +206,10 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -webkit-object-fit: cover;
+  object-fit: cover; /* For non-Safari browsers */
+  -webkit-object-position: center;
+  object-position: center; /* For non-Safari browsers */
 }
 
 .section-title {
@@ -378,8 +381,10 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -webkit-object-fit: cover;
+  object-fit: cover; /* For non-Safari browsers */
+  -webkit-object-position: center;
+  object-position: center; /* For non-Safari browsers */
 }
 
 .owl-carousel .owl-item img {
@@ -388,4 +393,39 @@
 
 .about .card {
   margin-bottom: 10px;
+}
+
+.count-bar {
+  background: #e1e1e1;
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  font-weight: bold;
+}
+
+.progress-block {
+  display: flex;
+  flex: 1;
+  margin-left: 10px;
+}
+
+#refferal .title { 
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#refferal p {
+  margin-bottom: 8px;
+}
+
+.page-title-alert {
+  font-size: 28px;
+  background: -webkit-linear-gradient(0deg, #0099ff, #ffee00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.main-t {
+  text-align: center;
 }

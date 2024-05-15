@@ -15,6 +15,10 @@ const UserSchema = new mongoose.Schema({
   refferals: {
     type: Number,
     default: 0
+  },
+  voitedFor: {
+    name: String,
+    id: String
   }
 });
  

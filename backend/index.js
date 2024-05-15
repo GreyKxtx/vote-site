@@ -3,9 +3,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const userSchema = require('./schemas/userSchema');
 const candidateSchema = require('./schemas/candidateSchema');
-
+const path = require('path')
 const app = express();
-const port = 3000;
+const port = 80;
 
 // Middleware
 app.use(cors());
@@ -87,7 +87,7 @@ app.get('/api/refLink', async (req, res) => {
             {$inc : {'refferals' : 1}}, 
         );
         // Send success response
-        res.redirect('http://localhost:5500?status=ok')
+        res.redirect('http://tviyvibir.com.ua?status=ok')
     } catch (error) {
         // Handle error
         console.error("Error creating user:", error);
@@ -126,7 +126,7 @@ app.get('/api/vote', async (req, res) => {
 });
 
 app.post('/api/vote', async (req, res) => {
-    const { selectedTab, selectedCardSide } = req.body;
+    const { selectedTab, selectedCardSide, username } = req.body;
     try {
         const tab = tabs[selectedTab]
         if (tab) {
@@ -151,7 +151,23 @@ app.post('/api/vote', async (req, res) => {
                     voices: 1
                 })
             }
-                
+
+            if (!selectedItem.id || !selectedItem.name) {
+                throw new Error('selectedItem must have id and name fields');
+            }
+
+            await User.findOneAndUpdate(
+                {username: username},
+                {
+                    $set : {
+                        'voitedFor': {
+                            id: selectedItem.id,
+                            name: selectedItem.name
+                        }
+                    }
+                }
+            );
+        
             res.sendStatus(200);
         } else {
             res.sendStatus(400);
@@ -175,3 +191,8 @@ app.listen(port, async () => {
         console.error("MongoDB connection error:", err);
     }
 });
+
+app.use(express.static(path.resolve(__dirname, '../', 'client')))
+app.get('*', (_, res) => {
+    res.sendFile(path.resolve(__dirname, '../', 'client', 'index.html'))
+})

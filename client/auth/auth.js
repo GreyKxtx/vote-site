@@ -12,7 +12,7 @@ form.addEventListener("submit", (e) => {
 
 
     if (username && password) {
-        fetch('http://localhost:3000/api/auth/login', {
+        fetch('http://tviyvibir.com.ua/api/auth/login', {
             method: 'POST',
             body: body,
             headers: new Headers({ "Content-Type": "application/json" })

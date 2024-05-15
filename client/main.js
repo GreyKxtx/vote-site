@@ -15,6 +15,8 @@ document.querySelectorAll('.tab').forEach((tab) => {
         selectedTab = event.target.id;
         hideTabs();
         showTab(selectedTab);
+
+        countVoites();
     })
 })
 
@@ -44,7 +46,7 @@ if (username) {
     document.querySelector('#refferal').style.display = 'block';
     document.querySelector('#username').innerHTML = username;
     
-    const link = `http://localhost:3000/api/refLink?username=${username}`
+    const link = `http://tviyvibir.com.ua/api/refLink?username=${username}`
     document.querySelector('#copy_field').value = link;
 
     getUser()
@@ -55,11 +57,12 @@ if (username) {
 document.querySelector('#vote-button').addEventListener('click', () => {
     const body = JSON.stringify({
         selectedTab,
-        selectedCardSide        
+        selectedCardSide,
+        username: username      
     });
     
     try {
-        fetch('http://localhost:3000/api/vote', {
+        fetch('http://tviyvibir.com.ua/api/vote', {
             method: 'POST',
             body: body,
             headers: new Headers({ "Content-Type": "application/json" })
@@ -74,7 +77,7 @@ document.querySelector('#vote-button').addEventListener('click', () => {
 })
 
 function getAllCandidates() {
-    fetch('http://localhost:3000/api/vote', {
+    fetch('http://tviyvibir.com.ua/api/vote', {
         method: 'GET'
     }).then((elements) => {
         elements = elements;
@@ -83,7 +86,7 @@ function getAllCandidates() {
 
 function getUser() {
     try {
-        fetch(`http://localhost:3000/api/user?username=${username}`, {
+        fetch(`http://tviyvibir.com.ua/api/user?username=${username}`, {
             method: 'GET'
         })
         .then(async (user) => {
@@ -101,7 +104,7 @@ function getUser() {
 }
 
 async function fetchTabs() {
-    let response = await fetch('http://localhost:3000/api/tabs', {
+    let response = await fetch('http://tviyvibir.com.ua/api/tabs', {
         method: 'GET'
     })
     
@@ -129,3 +132,28 @@ document.querySelectorAll('.modal-button').forEach((b) => {
         document.querySelectorAll('.modal').forEach((m) => m.style.display = 'none');
     })
 })
+
+function animateValue(obj, start, end, duration) {
+    if (start === end) return;
+    var range = end - start;
+    var current = start;
+    var increment = end > start ? 10 : -1;
+    var stepTime = Math.abs(1);
+    var timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end || current > end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+function countVoites() {
+    document.querySelectorAll('.count-bar').forEach((bar) => {
+        const value = bar.innerHTML;
+        bar.innerHTML = 0;
+        animateValue(bar, 0, value);
+    })
+}
+
+countVoites();
