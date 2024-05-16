@@ -24,13 +24,13 @@
         <div class="tab-wrap">
             <!-- active tab on page load gets checked attribute -->
             <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
-            <label for="tab1">Магазини Продуктові</label>
+            <label for="tab1" class="black-border">Магазини Продуктові</label>
             
             <input type="radio" id="tab2" name="tabGroup1" class="tab">
-            <label for="tab2">Магизини техніки</label>
+            <label for="tab2" class="black-border">Магизини техніки</label>
             
             <input type="radio" id="tab3" name="tabGroup1" class="tab">
-            <label for="tab3">Заправки</label>
+            <label for="tab3" class="black-border">Заправки</label>
             
             <div data-tab="tab1" class="tab__content">
                 <div class="card-container">
@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="count-bar">2345</div>
+                                    <div class="count-bar">55</div>
                                 </div>
                             </div>
                         </div>
@@ -70,8 +70,24 @@
                                         </div>
                                     </div>
 
-                                    <div class="count-bar">3423</div>
+                                    <div class="count-bar">239</div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Модальное окно -->
+                    <div id="Modal" class="modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <span class="close">&times;</span>
+                                <h2>Вітаємо!</h2>
+                            </div>
+                            <div class="modal-body">
+                                <p>Для голосування потрібно авторизуватись </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="button-20" class="button-19 modal-button" role="button">Авторизоватся</button>
                             </div>
                         </div>
                     </div>
@@ -193,7 +209,6 @@
 
     <div id="refferal" class="tab-wrap">
         <h3 class="title">Персональний кабінет</h3>
-
         <p>
             <span>Ви ввійшли як:</span>
             <span id="username"></span>
@@ -243,51 +258,41 @@
     <h2 class="section-title">Наші партнери:</h2>
 
     <div class="container about">
-        <div class="card">
-            <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <div>
-                        <img src="./photo/photo_vorting_group/atb.png" alt="">
-                    </div>
-                </div>
-                <div class="item">
-                    <div>
-                        <img src="./photo/photo_vorting_group/silpo.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="container" data-animated>
+            <ul id="list">
+                <li><img src="photo/photo_vorting_group/allo.png" alt="Description of Image Allo"></li>
+                <li><img src="photo/photo_vorting_group/citrus.png" alt="Description of Image citrus"></li>
+                <li><img src="photo/photo_vorting_group/foxtrot.jpg" alt="Description of Image foxtrot"></li>
+                <li><img src="photo/photo_vorting_group/brsm.png" alt="Description of Image brsm"></li>
+                <li><img src="photo/photo_vorting_group/okko.jpg" alt="Description of Image okko"></li>
+                <li><img src="photo/photo_vorting_group/socar.jpg" alt="Description of Image socar"></li>
+                <li><img src="photo/photo_vorting_group/wog.png" alt="Description of Image wog"></li>
 
-        <div class="card">
-            <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <div>
-                        <img src="./photo/photo_vorting_group/foxtrot.png" alt="">
-                    </div>
-                </div>
-                <div class="item">
-                    <div>
-                        <img src="./photo/photo_vorting_group/allo.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+            </ul>
+            <ul id="list">
+                <li><img src="photo/photo_vorting_group/atb.png" alt="Description of Image atb"></li>
+                <li><img src="photo/photo_vorting_group/novus.jpg" alt="Description of Image novus"></li>
+                <li><img src="photo/photo_vorting_group/varus.png" alt="Description of Image varus"></li>
+                <li><img src="photo/photo_vorting_group/silpo.png" alt="Description of Image silpo"></li>
+                <li><img src="photo/photo_vorting_group/rost.png" alt="Description of Image rost"></li>
 
-        <div class="card">
-            <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <div>
-                        <img src="./photo/photo_vorting_group/wog.png" alt="">
-                    </div>
-                </div>
-                <div class="item">
-                    <div>
-                        <img src="./photo/photo_vorting_group/socar.png" alt="">
-                    </div>
-                </div>
-            </div>
+                <li><img src="photo/photo_vorting_group/abank.jpg" alt="Description of Image wog"></li>
+                <li><img src="photo/photo_vorting_group/monobank.jpg" alt="Description of Image wog"></li>
+                <li><img src="photo/photo_vorting_group/privatbank.png" alt="Description of Image wog"></li>
+                <li><img src="photo/photo_vorting_group/pumb.png" alt="Description of Image wog"></li>
+
+                <li><img src="photo/photo_vorting_group/bolt.png" alt="Description of Image bolt"></li>
+                <li><img src="photo/photo_vorting_group/ontaxi.png" alt="Description of Image ontaxi"></li>
+                <li><img src="photo/photo_vorting_group/uklon.png" alt="Description of Image uklon"></li>
+            </ul>
+
+            <ul id="list">
+
+            </ul>
         </div>
     </div>
+
+    
     
     <div id="myModal" class="modal">
         <div class="modal-content">
@@ -326,6 +331,7 @@
     <script src="jQuery.js"></script>
     <script src="./carousel.js"></script>
     <script src="./modal.js"></script>
+    <script src="./overlay.js"></script>
     <script src="background.js"></script>
 </body>
 </html>

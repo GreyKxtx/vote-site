@@ -222,9 +222,11 @@
 }
 
 #refferal {
+  display: flex;
+  align-items: center;
   background: #ffffff;
   border-radius: 5px;
-  padding: 10px 25px;
+  padding: 0px 25px;
   margin: 5px 0;
 }
 
@@ -259,7 +261,7 @@
 
 .referal-wrapper {
   width: 100%;
-  max-width: 720px;
+  max-width: 750px;
   padding: 10px 10px 24px 10px;
   border-radius: 4px;
   background-color: #dfe8f9;
@@ -429,3 +431,67 @@
 .main-t {
   text-align: center;
 }
+
+.black-border{
+  border: 1px solid black;
+}
+
+
+
+
+body {
+  background: linear-gradient(var(--dark-blue), var(--darker-blue));
+  font-family: sans-serif;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 100dvh;
+  margin: 0;
+}
+
+
+#container {
+  width: 75vw;
+  mask: linear-gradient(90deg, transparent, white 40%, white 60%, transparent);
+  -webkit-mask: linear-gradient(90deg, transparent, white 40%, white 60%, transparent);
+  overflow: hidden;
+}
+
+ul {
+  display: flex;
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background: var(--light-blue);
+  color: var(--text-color);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 
+      2px 2px 2px var(--dark-blue-shadow),
+      2px 3px 3px var(--dark-blue-shadow),
+      2px 5px 5px var(--dark-blue-shadow),
+      2px 8px 8px var(--dark-blue-shadow);
+}
+
+img {
+  width: 75px; /* задайте желаемую ширину */
+  height: 75px; /* задайте желаемую высоту */
+  object-fit: cover; /* объект покрывает контейнер */
+  border-radius: 7px; /* для того чтобы картинки также имели закругленные углы */
+}
+
+#container[data-animated] #list {
+  width: max-content;
+  animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+  to {
+      transform: translateX(calc(-50% - 5px));
+  }
+}
+

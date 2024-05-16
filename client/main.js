@@ -137,7 +137,7 @@ function animateValue(obj, start, end, duration) {
     if (start === end) return;
     var range = end - start;
     var current = start;
-    var increment = end > start ? 10 : -1;
+    var increment = end > start ? 1 : -1;
     var stepTime = Math.abs(1);
     var timer = setInterval(function() {
         current += increment;
@@ -157,3 +157,15 @@ function countVoites() {
 }
 
 countVoites();
+
+
+const list = document.querySelector("#list");
+const listContent = Array.from(list.children);
+
+listContent.forEach(item => {
+	const duplicatedItem = item.cloneNode(true);
+	duplicatedItem.setAttribute("aria-hidden",true);
+	list.appendChild(duplicatedItem);
+});
+
+
