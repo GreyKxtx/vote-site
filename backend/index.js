@@ -184,7 +184,7 @@ app.listen(port, async () => {
     console.log(`Example app listening on port ${port}`);
 
     try {
-        await mongoose.connect('mongodb+srv://Mova:5647@db.shp2vzt.mongodb.net/?retryWrites=true&w=majority&appName=DB',
+        await mongoose.connect('mongodb+srv://petr900100:QzrahkRDMEEjltgI@db.3bimhc9.mongodb.net/?retryWrites=true&w=majority&appName=DB',
             { useNewUrlParser: true, useUnifiedTopology: true });
         console.log("Connected to MongoDB");
     } catch (err) {
