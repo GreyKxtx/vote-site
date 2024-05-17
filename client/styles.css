@@ -439,7 +439,7 @@ text-align: center;
 
 
 #container {
-  width: 45vw;
+  width: 65vw;
   mask: linear-gradient(90deg, transparent, white 40%, white 60%, transparent);
   -webkit-mask: linear-gradient(90deg, transparent, white 40%, white 60%, transparent);
   overflow: hidden;
