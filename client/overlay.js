@@ -1,5 +1,5 @@
 // Получаем элементы
-const ratingContainer = document.querySelector('.rating-container');
+const ratingContainer = document.querySelectorAll('.rating-container');
 const overlayModal = document.getElementById('Modal'); // Переименованная переменная
 const closeBtn = overlayModal.querySelector('.close');
 
@@ -14,11 +14,27 @@ function closeModal() {
 }
 
 // Добавляем обработчик события для открытия модального окна при клике на контейнер
-ratingContainer.addEventListener('click', function(event) {
-    if (event.target.closest('.rating-container')) {
-        openModal();
-    }
-});
+ratingContainer.forEach((item) => {
+    item.addEventListener('click', function(event) {
+        if (localStorage.getItem('username') === null) {
+            if (event.target.closest('.rating-container')) {
+                openModal();
+            }
+        } else {
+            if (localStorage.getItem('isVoted')) {
+                return
+            }
+
+            const selTab = event.target.closest('.card').dataset.pr_tab;
+            const elementTab = event.target.closest('.card').dataset.side;
+
+            selectedTab = selTab;
+            selectedCardSide = elementTab;
+            document.querySelector('#vote-button').click();
+            vote();
+        }
+    });
+})
 
 // Добавляем обработчик события для закрытия модального окна при клике на кнопку закрытия
 closeBtn.addEventListener('click', closeModal);

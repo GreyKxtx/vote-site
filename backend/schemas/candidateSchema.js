@@ -9,7 +9,8 @@ const CandidateSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  voices: Number
+  voices: Number,
+  default: 0
 });
  
 module.exports = CandidateSchema;

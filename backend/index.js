@@ -21,36 +21,42 @@ const tabs = {
         front: {
             id: 'atb',
             name: 'АТБ',
-            color: 'red'
+            color: 'red',
+            voices: 2437
         },
         back: {
             id: 'silpo',
             name: 'Сільпо',
-            color: 'orange'
+            color: 'orange',
+            voices: 1849
         }
     },
     tab2: {
         front: {
             id: 'foxtrot',
             name: 'Фокстрот',
-            color: 'orange'
+            color: 'orange',
+            voices: 1762
         },
         back: {
             id: 'allo',
             name: 'Aлло',
-            color: 'red'
+            color: 'red',
+            voices: 1452
         }
     },
     tab3: {
         front: {
             id: 'socar',
             name: 'Socar',
-            color: '#7CB9E8'
+            color: '#7CB9E8',
+            voices: 876
         },
         back: {
             id: 'wog',
             name: 'Wog',
-            color: 'green'
+            color: 'green',
+            voices: 1370
         }
     },
 }
@@ -58,7 +64,6 @@ const tabs = {
 // Route for user creation
 app.post('/api/auth/login', async (req, res) => {
     const { username, password, messanger } = req.body;
-    console.log(req.body);
     try {
         // Validate input (example: check if username and password are provided)
         if (!username || !password) {
@@ -99,6 +104,24 @@ app.get('/api/tabs', async (req, res) => {
     res.status(200).json(tabs);
 });
 
+app.get('/api/tabs/:selectedTab/:elementTab', async (req, res) => {
+    const selectedTab = req.params.selectedTab
+    const elementTab = req.params.elementTab
+    const el = await Candidate.findOne({tabId: selectedTab, elementId: elementTab})
+
+    if (el) {
+        res.status(200).json(el);
+    } else {
+        const tab = tabs[selectedTab]
+
+        if (tab.front.id === elementTab) {
+            res.status(200).json(tabs[selectedTab].front)
+        } else {
+            res.status(200).json(tabs[selectedTab].back)
+        }
+    }
+});
+
 
 app.get('/api/user', async (req, res) => {
     const { username } = req.query;
@@ -126,7 +149,9 @@ app.get('/api/vote', async (req, res) => {
 });
 
 app.post('/api/vote', async (req, res) => {
-    const { selectedTab, selectedCardSide, username } = req.body;
+    let { selectedTab, selectedCardSide, username, voices } = req.body;
+    console.log('data', req.body);
+
     try {
         const tab = tabs[selectedTab]
         if (tab) {
@@ -137,18 +162,23 @@ app.post('/api/vote', async (req, res) => {
             })
             
             if (candidate) {
-                await Candidate.updateOne(
+                const el = await Candidate.findOneAndUpdate(
                     {
                         tabId: selectedTab,
                         elementId: selectedItem.id
                     },
-                    {$inc : {'voices' : 1}}, 
+                    {$set: {
+                        'voices': voices
+                    }},
+                    {new: true}
                 )
+
+                console.log(el);
             } else {
                 await Candidate.create({
                     tabId: selectedTab,
                     elementId: selectedItem.id,
-                    voices: 1
+                    voices: voices
                 })
             }
 
@@ -184,7 +214,7 @@ app.listen(port, async () => {
     console.log(`Example app listening on port ${port}`);
 
     try {
-        await mongoose.connect('mongodb+srv://Mova:5647@db.shp2vzt.mongodb.net/?retryWrites=true&w=majority&appName=DB',
+        await mongoose.connect('mongodb+srv://petr:petr900100@db.3bimhc9.mongodb.net/?retryWrites=true&w=majority&appName=DB',
             { useNewUrlParser: true, useUnifiedTopology: true });
         console.log("Connected to MongoDB");
     } catch (err) {

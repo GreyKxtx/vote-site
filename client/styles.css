@@ -181,9 +181,9 @@ gap: 20px;
 }
 
 .progress-box {
-width: 100%;
-margin-right: 10px;
-margin-top: 3px;
+  width: 100%;
+  margin-right: 10px;
+  margin-top: 3px;
 }
 
 .rating-container .card {
@@ -396,11 +396,13 @@ margin-bottom: 10px;
 }
 
 .count-bar {
-background: #e1e1e1;
-padding: 5px 10px;
-border-radius: 20px;
-box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-font-weight: bold;
+  background: #e1e1e1;
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  font-weight: bold;
+  min-width: 55px;
+  text-align: center;
 }
 
 .progress-block {
@@ -439,7 +441,7 @@ text-align: center;
 
 
 #container {
-  width: 65vw;
+
   mask: linear-gradient(90deg, transparent, white 40%, white 60%, transparent);
   -webkit-mask: linear-gradient(90deg, transparent, white 40%, white 60%, transparent);
   overflow: hidden;

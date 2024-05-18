@@ -4,11 +4,18 @@ let selectedCardSide = 'front';
 let elements = [];
 let tabs = [];
 let user;
+let isFirstLoad = true;
 
 const isAuthed = localStorage.getItem('isAuthed') || false;
 
 fetchTabs()
 getAllCandidates();
+
+if (localStorage.getItem('isVoted')) {
+    setTimeout(() => {
+        document.querySelector('#vote-button').click();
+    }, 1)
+}
 
 document.querySelectorAll('.tab').forEach((tab) => {
     tab.addEventListener('click', (event) => {
@@ -24,13 +31,26 @@ function hideTabs() {
     document.querySelectorAll('[data-tab]').forEach((tab) => tab.style.display = 'none');
 }
 
-function showTab(tabId) {
+async function getEl(elementTab) {
+    return fetch(`http://tviyvibir.com.ua/api/tabs/${selectedTab}/${elementTab}`, {}).then((el) => el.json())
+}
+
+async function showTab(tabId) {
     const sTab = tabs[selectedTab][selectedCardSide];
     document.querySelector(`[data-tab=${tabId}]`).style.display = 'block';
     document.querySelector(`[data-tab=${tabId}]`).style.border = `2px solid ${sTab.color}`
     document.querySelector(`[data-progress=${tabs[selectedTab].front.id}]`).style.backgroundColor = tabs[selectedTab].front.color;
     document.querySelector(`[data-progress=${tabs[selectedTab].back.id}]`).style.backgroundColor = tabs[selectedTab].back.color;
+
+    document.querySelector(`[data-voices=${tabs[selectedTab].front.id}-front]`).innerHTML = (await getEl(tabs[selectedTab].front.id)).voices
+    document.querySelector(`[data-voices=${tabs[selectedTab].back.id}-back]`).innerHTML = (await getEl(tabs[selectedTab].back.id)).voices
+
     document.querySelector('#vote-button .text').innerHTML = `Голосовать за ${sTab.name}`
+
+    if (isFirstLoad) {
+        countVoites();
+        isFirstLoad = false;
+    }
 }
 
 if (isAuthed) {
@@ -54,11 +74,18 @@ if (username) {
     document.querySelector('#refferal').style.display = 'none';
 }
 
-document.querySelector('#vote-button').addEventListener('click', () => {
+function vote() {
+    if (localStorage.getItem('isVoted')) {
+        return
+    }
+
+    const voices = +document.querySelector(`[data-voices=${tabs[selectedTab][selectedCardSide].id}-${selectedCardSide}]`).innerHTML + 1;
+
     const body = JSON.stringify({
         selectedTab,
         selectedCardSide,
-        username: username      
+        username: username,
+        voices: voices    
     });
     
     try {
@@ -69,11 +96,16 @@ document.querySelector('#vote-button').addEventListener('click', () => {
         }).then(() => {
             setTimeout(() => {
                 document.querySelector('#modalSuccess').style.display = 'block';
+                localStorage.setItem('isVoted', true);
             }, 3200)
         })
     } catch(err) {
         console.log(err);
     }
+}
+
+document.querySelector('#vote-button').addEventListener('click', () => {
+    vote();
 })
 
 function getAllCandidates() {
@@ -93,8 +125,7 @@ function getUser() {
             if (user) {
                 user = await user.json();
                 user = user[0];
-                console.log(user);
-                document.querySelector('#refCount').innerHTML = user.refferals || 0;
+                document.querySelector('#refCount').innerHTML = user && user.refferals || 0;
             }
         })
     }
@@ -137,7 +168,7 @@ function animateValue(obj, start, end, duration) {
     if (start === end) return;
     var range = end - start;
     var current = start;
-    var increment = end > start ? 1 : -1;
+    var increment = end > start ? 5 : -1;
     var stepTime = Math.abs(1);
     var timer = setInterval(function() {
         current += increment;
@@ -145,19 +176,22 @@ function animateValue(obj, start, end, duration) {
         if (current == end || current > end) {
             clearInterval(timer);
         }
+
+        if (increment !== 1 && current > (end - (end * 0.2))) {
+            increment = 1;
+        }
     }, stepTime);
 }
 
 function countVoites() {
     document.querySelectorAll('.count-bar').forEach((bar) => {
         const value = bar.innerHTML;
+
+        if (value <= 0) return;
         bar.innerHTML = 0;
         animateValue(bar, 0, value);
     })
 }
-
-countVoites();
-
 
 const list = document.querySelector("#list");
 const listContent = Array.from(list.children);
